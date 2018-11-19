@@ -1,0 +1,55 @@
+﻿<html>
+
+<head>
+<title>Inicias Sesion</title>
+</head>
+
+</head>
+<header style="color:beige;"> 
+<h1>Agencia de Viajes El Camello <img src="\static\foto.png" alt="logo" style="width: 75px;height: 75px;"> </h1>
+</header>
+
+{% with messages = get_flashed_messages() %}
+	         {% if messages %}
+	            <script>
+	      var messages = {{ messages | safe }};
+	      for (var i=0; i<messages.length; i++) {
+	        alert(messages[i]);
+	      }
+	    </script>
+	    	{% endif %}
+{% endwith %}
+
+<style>
+div {
+    background-color: beige;
+    width: 300px;
+    padding: 25px;
+    margin: 25px;
+}
+</style>
+<center>
+<div class="centered">
+<h2>Iniciar Sesion</h2>
+<body style="background-color:#5845e8;">
+{% block body  %}
+	<form action="{{ url_for('ingresar') }}" method="POST">
+		Usuario:
+		<br>
+		<input type="text" name="usuario">
+		<br>
+		Password:
+		<br>
+		<input type="password" name="password">
+		<br>
+		<input type=submit name="boton" value="entrar">
+	</form>
+	<br>
+	Necesita una cuenta? <a href="{{ url_for('crear') }}">Crear cuenta</a>
+
+</div>
+</center>
+{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<html>
+
+<head>
+<title>Reservar</title>
+</head>
+
+<h1>Eliga un vuelo</h1>
+
+{% with messages = get_flashed_messages() %}
+	         {% if messages %}
+	            <script>
+	      var messages = {{ messages | safe }};
+	      for (var i=0; i<messages.length; i++) {
+	        alert(messages[i]);
+	      }
+	    </script>
+	    	{% endif %}
+{% endwith %}
+
+<body style="background-color:#5845e8;">
+{% block body  %}
+	{% for i in range(0,lengthTemp) %}
+
+	<form action="{{ url_for('reservarVuelo') }}" method="POST">
+		<input type="radio" name="radio" value="{{posiblesVuelos[i][0]['numVuelo']}}"> Areolinea: {{posiblesVuelos[i][0]["aerolinea"]}}, Numero de Vuelo: {{posiblesVuelos[i][0]["numVuelo"]}} Hora de salida: {{posiblesVuelos[i][0]['horaSalida']}}, Hora de llegada: {{posiblesVuelos[i][0]['horaLlegada']}}</input>
+		<br>
+	{% endfor %}
+	<input type=submit name="boton" value="Reservar Vuelo">
+	</form>
+{% endblock %}
+</body>
+
+</html>

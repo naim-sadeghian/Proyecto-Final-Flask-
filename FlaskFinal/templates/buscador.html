@@ -1,0 +1,125 @@
+﻿<html>
+
+<head >
+<title> El Camello </title>
+</head>
+<header style="color:beige;"> 
+<h1>Agencia de Viajes El Camello <img src="\static\foto.png" alt="logo" style="width: 75px;height: 75px;"> </h1>
+</header>
+
+<style>
+div {
+    background-color: beige;
+    width: 300px;
+    padding: 25px;
+    margin: 25px;
+}
+</style>
+{% with messages = get_flashed_messages() %}
+	         {% if messages %}
+	            <script>
+	      var messages = {{ messages | safe }};
+	      for (var i=0; i<messages.length; i++) {
+	        alert(messages[i]);
+	      }
+	    </script>
+	    	{% endif %}
+{% endwith %}
+
+<body style="background-color:#5845e8;">
+
+<div> 
+Bienvenido: <br>
+{{usuarioOnline.nombre}} {{usuarioOnline.apellido}}<br>
+<br>
+Historial de Reserva:<br>
+{{usuarioOnline.historial}}
+<br>
+<br>
+Preferencias de Aerolinea:<br>
+{{usuarioOnline.preferencia}}
+</div>
+
+
+
+
+{% block body  %}
+	
+	<form action="{{ url_for('buscarVuelo')}}" method="POST">
+		Ciudad de Salida
+		<br>
+		<select name="sel_origen" class="selectpicker form-control">
+			<option value="ABQ" >Albuquerque</option>
+			<option value="ATL" >Atlanta</option>
+			<option value="BNA" >Nashville</option>
+			<option value="BOS" >Boston</option>
+			<option value="DCA" >Washington D.C.</option>
+			<option value="DEN" >Denver</option>
+			<option value="DFW" >Dallas/Fort Worth</option>
+			<option value="DTW" >Detroit</option>
+			<option value="HOU" >Houston</option>
+			<option value="JFK" >New York</option>
+			<option value="LAX" >Los Angeles</option>
+			<option value="MIA" >Miami</option>
+			<option value="MSP" >Minneapolis/St Paul</option>
+			<option value="MSY" >New Orleans</option>
+			<option value="ORD" >Chicago</option>
+			<option value="PHL" >Philadelphia</option>
+			<option value="PHX" >Phoenix</option>
+			<option value="PVD" >Providence/Newport</option>
+			<option value="RDU" >Raleigh/Durham</option>
+			<option value="SEA" >Seattle/Tacoma</option>
+			<option value="SFO" >San Francisco</option>
+			<option value="STL" >St Louis</option>
+			<option value="TPA" >Tampa</option>
+		</select>
+		<br>
+		<br>
+		Destino Final
+		<br>
+		<select name="sel_destino" class="selectpicker form-control">
+			<option value="ABQ" >Albuquerque</option>
+			<option value="ATL" >Atlanta</option>
+			<option value="BNA" >Nashville</option>
+			<option value="BOS" >Boston</option>
+			<option value="DCA" >Washington D.C.</option>
+			<option value="DEN" >Denver</option>
+			<option value="DFW" >Dallas/Fort Worth</option>
+			<option value="DTW" >Detroit</option>
+			<option value="HOU" >Houston</option>
+			<option value="JFK" >New York</option>
+			<option value="LAX" >Los Angeles</option>
+			<option value="MIA" >Miami</option>
+			<option value="MSP" >Minneapolis/St Paul</option>
+			<option value="MSY" >New Orleans</option>
+			<option value="ORD" >Chicago</option>
+			<option value="PHL" >Philadelphia</option>
+			<option value="PHX" >Phoenix</option>
+			<option value="PVD" >Providence/Newport</option>
+			<option value="RDU" >Raleigh/Durham</option>
+			<option value="SEA" >Seattle/Tacoma</option>
+			<option value="SFO" >San Francisco</option>
+			<option value="STL" >St Louis</option>
+			<option value="TPA" >Tampa</option>
+		</select>
+		<br>
+		<br>
+		<input type=submit name="boton" value="Buscar Vuelo">
+		<input type=submit name="boton" value="Buscar Con Preferencias">
+		<br>
+		<br>
+		<br>
+		<br>
+		
+		<input type=submit name="boton" value="Salir" align="centered">
+		<br>
+		<br>
+		
+		<input type=submit name="boton" value="Editar Preferencias" align="centered">
+		
+	</form>
+
+{% endblock %}
+</body>
+
+</html>

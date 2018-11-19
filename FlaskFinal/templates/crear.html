@@ -1,0 +1,74 @@
+﻿<html>
+
+<head>
+<title>Crear Cuenta</title>
+</head>
+{% with messages = get_flashed_messages() %}
+	         {% if messages %}
+	            <script>
+	      var messages = {{ messages | safe }};
+	      for (var i=0; i<messages.length; i++) {
+	        alert(messages[i]);
+	      }
+	    </script>
+	    	{% endif %}
+{% endwith %}
+
+<body style="background-color:#5845e8;">
+<h1>Crear Cuenta</h1>
+{% block body  %}
+	<form action="{{ url_for('registrar') }}" method="POST">
+
+	Nombre:
+	<br>
+	<input type="text" name="nombre">
+	<br>
+
+	Apellido:
+	<br>
+	<input type="text" name="apellido">
+	<br>
+
+	Usuario:
+	<br>
+	<input type="text" name="usuario">
+	<br>
+
+	Password:
+	<br>
+	<input type="password" name="password">
+	<br>
+	
+	Preferencias:
+	<br>
+	<input type="checkbox" name="preferencias" value="AA"> AA
+	<br>
+	<input type="checkbox" name="preferencias" value="TW"> TW
+	<br>
+	<input type="checkbox" name="preferencias" value="DL"> DL
+	<br>
+	<input type="checkbox" name="preferencias" value="UA"> UA
+	<br>
+	<input type="checkbox" name="preferencias" value="YV"> YV
+	<br>
+	<input type="checkbox" name="preferencias" value="CO"> CO
+	<br>
+	<input type="checkbox" name="preferencias" value="WN"> WN
+	<br>
+	<input type="checkbox" name="preferencias" value="HP"> HP
+	<br>
+	<input type="checkbox" name="preferencias" value="US"> US
+	<br>
+	<input type="checkbox" name="preferencias" value="PA"> PA 
+	<br>
+	<br>
+
+	<input type=submit name="boton" value="Crear Cuenta">
+	<br>
+
+	</form>
+	
+{% endblock %}
+</body>
+
+</html>
